@@ -116,15 +116,11 @@ In this model, an entire convolutional layer was removed to try to combat overfi
 
 Decreasing the number of filters from 24 to 8 in the convolutional layer also had little effect on overfitting. We will be looking into the cause of this overfitting using the data that we've gathered to try to pinpoint a cause. 
 
-## Followup : Data Shuffling
-Upon further investigation, it was discovered that the data was not properly shuffled before training the above networks. In order to test whether this was having an effect, Model 3 was retrained on shuffled data. The results can be seen below.
+## Followup : Individual
+At this point out group separated to work on our own individual models. Jared made a breakthrough and realized that once he shuffled the data, he got much better results. (https://github.com/VIPGatechFall2017/ShimonHeroVIP/tree/Jared) When working with my own model, I could not replicate such results. I experimented with image size and with the amount of convolutional layers:
 
-![model3-shuffled](https://github.com/VIPGatechFall2017/ShimonHeroVIP/blob/Jared/results/model3-shuffled.jpg)
+28x28 image, 1 conv layer with 64 kernels 2x2
+56x56 image, 2 conv layer, one with 32 4x4 kernels and one with 2x2 64 kernals
 
-This shows a clear improvement over the previous performance, indicating that the issue which was hindering performance was an issue with data, not an issue with overfitting/model complexity. This model trained relatively well. In order to test whether the testing accuracy issues could be entirely attributed to a lack of shuffling rather than overfitting, Model 2 was retrained on the new shuffled data. Model 2 is more complex than model 3 and takes an input of 48x48 patches. The results can be seen below.
+Most of the models preformed at or around 16.67% accuracy, and, with 6 categories, that's the accuracy someone would get if they were to guess randomly or if they were to put the same answer every time. The model with 28x28 images yielded the "best" results at 29% accuracy training. I attempted to overfit the model to the training data, but I couldn't even do that, and after adjusting this model for nearly 2 weeks I conculded that this low accuracy was due to bad data. At the end of the semester there was not enough time to collect enough good data to train, so if I am to continue on this same project next semester, it will be my priority to take a lot of good data early on in the semester.
 
-![model2-shuffled](https://github.com/VIPGatechFall2017/ShimonHeroVIP/blob/Jared/results/model2-shuffled.jpg)
-
-With model 2, up to 70% testing accuracy was acheived, with no significant signs of overfitting, despite the complexity of the network. One interesting fact is that toward the beginning of training, the testing accuracy is higher than the training accuracy. According to discussions on the tensorflow source, this can occur at the early stages of training when using dropout layers, which this network uses.
-
-Based on these results, we can conclude that the poor performance of the networks previously was due to not shuffling the data properly.
