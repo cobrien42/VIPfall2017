@@ -117,9 +117,11 @@ In this model, an entire convolutional layer was removed to try to combat overfi
 Decreasing the number of filters from 24 to 8 in the convolutional layer also had little effect on overfitting. We will be looking into the cause of this overfitting using the data that we've gathered to try to pinpoint a cause. 
 
 ## Followup : Individual
-At this point out group separated to work on our own individual models. Jared made a breakthrough and realized that once he shuffled the data, he got much better results. (https://github.com/VIPGatechFall2017/ShimonHeroVIP/tree/Jared) When working with my own model, I could not replicate such results. I experimented with image size and with the amount of convolutional layers:
+At this point out group separated to work on our own individual models. Jared made a breakthrough and realized that once he shuffled the data, he got much better results. (https://github.com/VIPGatechFall2017/ShimonHeroVIP/tree/Jared) 
+When working with my own model, I could not replicate such results. I experimented with image size and with the amount of convolutional layers:
 
 28x28 image, 1 conv layer with 64 kernels 2x2
+
 56x56 image, 2 conv layer, one with 32 4x4 kernels and one with 2x2 64 kernals
 
 Most of the models preformed at or around 16.67% accuracy, and, with 6 categories, that's the accuracy someone would get if they were to guess randomly or if they were to put the same answer every time. The model with 28x28 images yielded the "best" results at 29% accuracy training. I attempted to overfit the model to the training data, but I couldn't even do that, and after adjusting this model for nearly 2 weeks I conculded that this low accuracy was due to bad data. At the end of the semester there was not enough time to collect enough good data to train, so if I am to continue on this same project next semester, it will be my priority to take a lot of good data early on in the semester.
